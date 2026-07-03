@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraTimer — Focus Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>AuraTimer</h1>
+  </header>
+
+  <main id="app">
+
+    <!-- ===== Timer Section ===== -->
+    <section id="timer-section" aria-labelledby="timer-heading">
+      <h2 id="timer-heading" class="visually-hidden">Timer Pomodoro</h2>
+
+      <!-- Phase label: hidden when timer is idle (Req 1.8) -->
+      <div
+        id="phase-label"
+        aria-live="polite"
+        aria-atomic="true"
+        hidden
+      ></div>
+
+      <div
+        id="timer-display"
+        role="timer"
+        aria-label="Waktu tersisa"
+        aria-live="off"
+      >25:00</div>
+
+      <div id="timer-controls" role="group" aria-label="Kontrol timer">
+        <button id="btn-start" type="button">Mulai</button>
+        <!-- pause and resume are hidden initially; shown/hidden via JS (Req 1.9, 1.10) -->
+        <button id="btn-pause"  type="button" hidden>Jeda</button>
+        <button id="btn-resume" type="button" hidden>Lanjut</button>
+        <button id="btn-reset"  type="button">Reset</button>
+      </div>
+
+      <!-- Accessible notification area (Req 1.4) -->
+      <div
+        id="timer-notification"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
+    </section>
+
+    <!-- ===== Soundscape Section ===== -->
+    <section id="soundscape-section" aria-labelledby="soundscape-heading">
+      <h2 id="soundscape-heading">Soundscape Studio</h2>
+
+      <div
+        id="soundscape-options"
+        role="group"
+        aria-label="Pilihan suara latar"
+      >
+        <button
+          class="soundscape-btn"
+          type="button"
+          data-sound="lofi"
+          aria-pressed="false"
+        >Lo-Fi Beats</button>
+        <button
+          class="soundscape-btn"
+          type="button"
+          data-sound="whitenoise"
+          aria-pressed="false"
+        >White Noise</button>
+        <button
+          class="soundscape-btn"
+          type="button"
+          data-sound="ocean"
+          aria-pressed="false"
+        >Ocean Waves</button>
+        <button
+          class="soundscape-btn"
+          type="button"
+          data-sound="rain"
+          aria-pressed="false"
+        >Rain</button>
+      </div>
+
+      <div id="volume-control-wrapper">
+        <label for="volume-control">Volume</label>
+        <input
+          type="range"
+          id="volume-control"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.7"
+          aria-valuemin="0"
+          aria-valuemax="1"
+          aria-valuenow="0.7"
+          aria-label="Volume suara latar"
+        />
+      </div>
+
+      <button id="btn-stop-sound" type="button">Hentikan Suara</button>
+
+      <!-- Error message shown when audio fails to load (Req 3.7) -->
+      <div
+        id="soundscape-error"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      ></div>
+    </section>
+
+    <!-- ===== Analytics Section ===== -->
+    <section id="analytics-section" aria-labelledby="analytics-heading">
+      <h2 id="analytics-heading">Analytics Board</h2>
+
+      <div id="daily-stats">
+        <div
+          id="total-minutes-widget"
+          aria-label="Total menit fokus hari ini"
+        >
+          <span class="widget-label">Total Menit Fokus Hari Ini</span>
+          <span class="widget-value">0</span>
+        </div>
+
+        <div
+          id="sessions-widget"
+          aria-label="Sesi selesai hari ini"
+        >
+          <span class="widget-label">Sesi Selesai Hari Ini</span>
+          <span class="widget-value">0</span>
+        </div>
+      </div>
+
+      <div
+        id="weekly-chart"
+        role="img"
+        aria-label="Grafik menit fokus 7 hari terakhir"
+      ></div>
+    </section>
+
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
