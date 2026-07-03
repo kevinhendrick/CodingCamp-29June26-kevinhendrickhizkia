@@ -1,0 +1,14 @@
+{
+  "name": "aura-timer",
+  "version": "1.0.0",
+  "description": "AuraTimer — Focus Timer premium berbasis web dengan soundscape dan analytics",
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run"
+  },
+  "devDependencies": {
+    "fast-check": "^3.22.0",
+    "happy-dom": "^20.10.6",
+    "vitest": "^2.1.0"
+  }
+}
